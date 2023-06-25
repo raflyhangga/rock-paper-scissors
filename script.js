@@ -14,43 +14,43 @@ function getComputerChoice () {
 function game(userChoice,enemyChoice) {
     if (userChoice == "ROCK") {
         if (enemyChoice == "ROCK") {
-            alert("You Draw!");
+            alert("Enemy Choose: "+ enemyChoice +"\nYou Draw!");
             return "DRAW"
         }
         else if (enemyChoice == "PAPER") {
-            alert("You Lose!");
+            alert("Enemy Choose: "+ enemyChoice +"\nYou Lose!");
             return "LOSE";
         }
         else {
-            alert("You Win!");
+            alert("Enemy Choose: "+ enemyChoice +"\nYou Win!");
             return "WIN";
         }
     }
     else if (userChoice == "PAPER") {
         if (enemyChoice == "ROCK") {
-            alert("You Win!");
+            alert("Enemy Choose: "+ enemyChoice +"\nYou Win!");
             return "WIN"
         }
         else if (enemyChoice == "PAPER") {
-            alert("You Draw!");
+            alert("Enemy Choose: "+ enemyChoice +"\nYou Draw!");
             return "DRAW";
         }
         else {
-            alert("You Lose!");
+            alert("Enemy Choose: "+ enemyChoice +"\nYou Lose!");
             return "LOSE";
         }
     }
     else if (userChoice == "SCISSORS") {
         if (enemyChoice == "ROCK") {
-            alert("You Lose!");
+            alert("Enemy Choose: "+ enemyChoice +"\nYou Lose!");
             return "LOSE"
         }
         else if (enemyChoice == "PAPER") {
-            alert("You Win!");
+            alert("Enemy Choose: "+ enemyChoice +"\nYou Win!");
             return "WIN";
         }
         else {
-            alert("You Draw!");
+            alert("Enemy Choose: "+ enemyChoice +"\nYou Draw!");
             return "DRAW";
         }
     }
