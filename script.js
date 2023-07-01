@@ -119,9 +119,10 @@ window.addEventListener('click', (e) => {
         }
     }
     
-
-    
-    dispUser.textContent = userChoice;
+    dispUser.textContent = '';
+    setTimeout(()=>{
+        dispUser.textContent = userChoice;
+    },200)
     dispComputer.textContent = "";
     setTimeout(()=> {
         dispComputer.textContent = compChoice;

@@ -44,6 +44,10 @@ body {
     color: var(--background);
 }
 
+.platform .choice {
+    height: 6rem;
+}
+
 .platform .enemy-tiles, .platform .user-tiles {
     color: var(--background);
     text-align: center;
