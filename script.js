@@ -81,34 +81,44 @@ window.addEventListener('click', (e) => {
         ++botScore;
     }
     
-    if ((totalScore === 2)) {
-        if ((userScore == 2 && botScore == 0) ||(userScore == 0 && botScore == 2)) {
-            if (userScore > botScore) {
+    totalScore = userScore + botScore;
+    if ((userScore == 2 && botScore == 0) ||(userScore == 0 && botScore == 2)) {
+        if (userScore > botScore) {
+            setTimeout(()=> {
                 dispResult.textContent = `You Won!`;
-                userScore = 0;
-                botScore = 0;
-                setTimeout(()=> {dispResult.textContent = ``;}, 1000 )
-            } else {
+            },800 )
+            userScore = 0;
+            botScore = 0;
+            setTimeout(()=> {
+                dispResult.textContent = ``;
+            }, 2000 )
+        } else {
+            setTimeout(()=> {
                 dispResult.textContent = `You Lose!`;
-                userScore = 0;
-                botScore = 0;
-                setTimeout(()=> {dispResult.textContent = ``;}, 1000 )
-            }
-        }
-        else {
-            if (userScore > botScore) {
-                dispResult.textContent = `You Won!`;
-                userScore = 0;
-                botScore = 0;
-                setTimeout(()=> {dispResult.textContent = ``;}, 1000 )
-            } else {
-                dispResult.textContent = `You Lose!`;
-                userScore = 0;
-                botScore = 0;
-                setTimeout(()=> {dispResult.textContent = ``;}, 1000 )
-            }
+            },800 )
+            userScore = 0;
+            botScore = 0;
+            setTimeout(()=> {dispResult.textContent = ``;}, 2000 )
         }
     }
+    else if (totalScore === 3) {
+        if (userScore > botScore) {
+            setTimeout(()=> {
+                dispResult.textContent = `You Won!`;
+            },800 )
+            userScore = 0;
+            botScore = 0;
+            setTimeout(()=> {dispResult.textContent = ``;}, 2000 )
+        } else {
+            setTimeout(()=> {
+                dispResult.textContent = `You Lose!`;
+            },800 )
+            userScore = 0;
+            botScore = 0;
+            setTimeout(()=> {dispResult.textContent = ``;}, 2000 )
+        }
+    }
+    
 
     
     dispUser.textContent = userChoice;
@@ -116,7 +126,6 @@ window.addEventListener('click', (e) => {
     setTimeout(()=> {
         dispComputer.textContent = compChoice;
         dispScore.textContent = `${userScore} - ${botScore}`;
-    },1000)
-    totalScore = userScore + botScore;
+    },500)
 })
 
