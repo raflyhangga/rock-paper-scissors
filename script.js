@@ -14,43 +14,34 @@ function getComputerChoice () {
 function game(userChoice,enemyChoice) {
     if (userChoice == "ROCK") {
         if (enemyChoice == "ROCK") {
-            alert("Enemy Choose: "+ enemyChoice +"\nYou Draw!");
             return "DRAW"
         }
         else if (enemyChoice == "PAPER") {
-            alert("Enemy Choose: "+ enemyChoice +"\nYou Lose!");
             return "LOSE";
         }
         else {
-            alert("Enemy Choose: "+ enemyChoice +"\nYou Win!");
             return "WIN";
         }
     }
     else if (userChoice == "PAPER") {
         if (enemyChoice == "ROCK") {
-            alert("Enemy Choose: "+ enemyChoice +"\nYou Win!");
             return "WIN"
         }
         else if (enemyChoice == "PAPER") {
-            alert("Enemy Choose: "+ enemyChoice +"\nYou Draw!");
             return "DRAW";
         }
         else {
-            alert("Enemy Choose: "+ enemyChoice +"\nYou Lose!");
             return "LOSE";
         }
     }
     else if (userChoice == "SCISSORS") {
         if (enemyChoice == "ROCK") {
-            alert("Enemy Choose: "+ enemyChoice +"\nYou Lose!");
             return "LOSE"
         }
         else if (enemyChoice == "PAPER") {
-            alert("Enemy Choose: "+ enemyChoice +"\nYou Win!");
             return "WIN";
         }
         else {
-            alert("Enemy Choose: "+ enemyChoice +"\nYou Draw!");
             return "DRAW";
         }
     }
@@ -65,38 +56,67 @@ function checkValidity(userChoice) {
     }
 }
 
+
+
 let userScore = 0;
 let botScore = 0;
 let totalScore = 0;
 
-
-while (totalScore < 3) {
-    if ((userScore == 2 && botScore == 0) ||(userScore == 0 && botScore == 2)) {
-            break;
-        }
-
-    let userChoice = prompt("Insert your choice! (Rock, Paper, or Scissors?)\nCurrent Score:\nYou: " + userScore + "     Computer: "+ botScore).toUpperCase();
-
-    while (checkValidity(userChoice) == false) {
-        userChoice = prompt("WRONG INPUT!!\nInsert your choice! (Rock, Paper, or Scissors?)\nCurrent Score:\nYou: " + userScore + "     Computer: "+ botScore).toUpperCase();
-    }
-
-
-    let enemyChoice = getComputerChoice();
-    let result = game(userChoice,enemyChoice);
-
-    if (result == "WIN") {
+window.addEventListener('click', (e) => {
+    const dispScore = document.querySelector('.platform .score h3');
+    const dispResult = document.querySelector('.platform .score h4')
+    const dispUser = document.querySelector('.platform .user-tiles span i')
+    const dispComputer = document.querySelector('.platform .enemy-tiles span i')
+    const userChoice = e.target.id;
+    const compChoice = getComputerChoice();
+    if (userChoice === '') return;
+    
+    let result = game(userChoice,compChoice);
+    
+    
+    
+    if (result === "WIN") {
         ++userScore;
-    }
-    else if (result == "LOSE") {
+    } else if (result === "LOSE") {
         ++botScore;
     }
-    totalScore = userScore + botScore;
-}
+    
+    if ((totalScore === 2)) {
+        if ((userScore == 2 && botScore == 0) ||(userScore == 0 && botScore == 2)) {
+            if (userScore > botScore) {
+                dispResult.textContent = `You Won!`;
+                userScore = 0;
+                botScore = 0;
+                setTimeout(()=> {dispResult.textContent = ``;}, 1000 )
+            } else {
+                dispResult.textContent = `You Lose!`;
+                userScore = 0;
+                botScore = 0;
+                setTimeout(()=> {dispResult.textContent = ``;}, 1000 )
+            }
+        }
+        else {
+            if (userScore > botScore) {
+                dispResult.textContent = `You Won!`;
+                userScore = 0;
+                botScore = 0;
+                setTimeout(()=> {dispResult.textContent = ``;}, 1000 )
+            } else {
+                dispResult.textContent = `You Lose!`;
+                userScore = 0;
+                botScore = 0;
+                setTimeout(()=> {dispResult.textContent = ``;}, 1000 )
+            }
+        }
+    }
 
-if (userScore > botScore) {
-    alert("You just won the game!")
-}
-else {
-    alert("You lose the game. Thank you for playing!")
-}
+    
+    dispUser.textContent = userChoice;
+    dispComputer.textContent = "";
+    setTimeout(()=> {
+        dispComputer.textContent = compChoice;
+        dispScore.textContent = `${userScore} - ${botScore}`;
+    },1000)
+    totalScore = userScore + botScore;
+})
+
